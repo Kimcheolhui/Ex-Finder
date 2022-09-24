@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from './pages/Home';
+import Login from './pages/Login';
+
+import styled from 'styled-components';
+
 import './App.css';
+import  {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+const Div = styled.div`
+  display: flex;
+  justify-content:center;
+`
