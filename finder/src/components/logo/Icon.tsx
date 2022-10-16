@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface LogoProps {
-	wid:string;
+  wid: string;
 }
 
 const LogoIcon = ({ wid }: LogoProps): JSX.Element => {
