@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import MyButton from '../components/MyButton';
+import MyButton from '../components/mycomponent/MyButton';
 import MainLogo from '../components/logo/MainLogo';
 import LoginBox from '../components/login/LoginBox';
 

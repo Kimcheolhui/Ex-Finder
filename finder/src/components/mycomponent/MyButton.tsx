@@ -24,7 +24,7 @@ const MyButton = ({
   );
 };
 
-export default MyButton;
+export default React.memo(MyButton);
 
 const Button = styled.button`
   border: none;
