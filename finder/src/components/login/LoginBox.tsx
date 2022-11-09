@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { LoginStateContext } from '../../App';
 
 import styled from 'styled-components';
 
-import MyButton from '../MyButton';
+import MyButton from '../mycomponent/MyButton';
 import LogoIcon from '../logo/Icon';
-import MyInput from '../MyInput';
+import MyInput from '../mycomponent/MyInput';
 
 const LoginBox = () => {
+  const { toggleLogin } = useContext(LoginStateContext);
+
   const [account, setAccount] = useState({
     id: '',
     password: '',
@@ -22,8 +25,6 @@ const LoginBox = () => {
     });
   };
 
-  const navigate = useNavigate();
-
   const [showPassword, setShowPassword] = useState(false);
   const PwdIcon = (
     <ToggleImg
@@ -35,6 +36,7 @@ const LoginBox = () => {
     setShowPassword(!showPassword);
   };
 
+  const navigate = useNavigate();
   const handleLogin = () => {
     if (account.id === '') {
       window.alert('이메일을 입력해주세요.');
@@ -46,7 +48,8 @@ const LoginBox = () => {
     }
     // 이메일, 비번 둘 다 입력했을 경우
     else {
-      window.alert('로그인 일단 성공');
+      toggleLogin();
+      navigate('/');
     }
   };
 
@@ -63,7 +66,8 @@ const LoginBox = () => {
       <LoginInput>
         <DivInput>
           <Input
-            type="text"
+            type="email"
+            name="id"
             onChange={(e) => {
               onChangeAccount(e);
             }}
@@ -73,6 +77,7 @@ const LoginBox = () => {
         <DivInput>
           <Input
             type={showPassword ? 'text' : 'password'}
+            name="password"
             onChange={(e) => {
               onChangeAccount(e);
             }}

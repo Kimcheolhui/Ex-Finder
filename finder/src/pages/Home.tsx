@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Components
-import MyButton from '../components/MyButton';
+import MyButton from '../components/mycomponent/MyButton';
 import MainHeader from '../components/MainHeader';
 import { useNavigate } from 'react-router-dom';
 import LogoIcon from '../components/logo/Icon';
@@ -46,10 +46,11 @@ const Home = () => {
 export default Home;
 
 const Div = styled.div`
-  width:1920px;
-  min-width:1190px
-  display:flex;
-  flex-direction:column;
+  width: 1920px;
+  min-width: 1190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Content = styled.div`

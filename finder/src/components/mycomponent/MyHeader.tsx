@@ -16,10 +16,11 @@ const MyHeader = ({ left, right }: HeaderProps) => {
   );
 };
 
-export default MyHeader;
+export default React.memo(MyHeader);
 
 const Header = styled.header`
   height: 100px;
+  width: 1816px;
   padding: 29px 52px;
   display: flex;
   align-items: center;
@@ -29,5 +30,4 @@ const Header = styled.header`
 const DivRight = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 380px;
 `;
