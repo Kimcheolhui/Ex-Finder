@@ -8,6 +8,7 @@ interface LogoProps {
 
 const MainLogo = ({ wid }: LogoProps): JSX.Element => {
   const source = 'assets/ex-finder-logo.png';
+
   const LogoImg = styled.img`
     width: ${wid};
   `;

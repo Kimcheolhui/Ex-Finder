@@ -1,10 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Components
 import MyButton from '../components/mycomponent/MyButton';
 import MainHeader from '../components/MainHeader';
-import { useNavigate } from 'react-router-dom';
 import LogoIcon from '../components/logo/Icon';
 
 const Home = () => {

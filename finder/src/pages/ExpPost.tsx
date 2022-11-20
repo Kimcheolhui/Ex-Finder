@@ -12,25 +12,29 @@ import { makeperiodArr } from '../components/util/makePeriodArr';
 
 import '../post.css';
 
+interface InfoType {
+  title: string;
+  field: string;
+  location: string;
+  reward: number;
+  age: {
+    ageFrom?: number;
+    ageTo?: number;
+  };
+  gender: string;
+  day: {
+    start: string;
+    end: string;
+  };
+  detail: string;
+}
+
+interface timeDictType {
+  [key: string]: string[];
+}
+
 const ExpPost = () => {
   const navigate = useNavigate();
-
-  type InfoType = {
-    title: string;
-    field: string;
-    location: string;
-    reward: number;
-    age: {
-      ageFrom?: number;
-      ageTo?: number;
-    };
-    gender: string;
-    day: {
-      start: string;
-      end: string;
-    };
-    detail: string;
-  };
 
   const [expInfo, setExpInfo] = useState<InfoType>({
     title: '',
@@ -49,8 +53,10 @@ const ExpPost = () => {
     detail: '',
   });
 
+  // 사용자가 선택한 날짜 배열
+  // ex) ['10/11','10/12', '10/13']
   const periodArr: string[] = makeperiodArr(expInfo.day);
-
+  // 위 배열을 토대로 object 생성
   const initDict = () => {
     const tempDict: timeDictType = {};
     for (let i = 0; i < periodArr.length; i++) {
@@ -59,26 +65,26 @@ const ExpPost = () => {
     return tempDict;
   };
 
-  // TimeTable 관련
-  type timeDictType = {
-    [key: string]: string[];
-  };
-  const [timeDict, settimeDict] = useState<timeDictType>(initDict);
+  // TimeTable state
+  const [timeDict, setTimeDict] = useState<timeDictType>(initDict);
   useEffect(() => {
-    settimeDict(initDict);
+    setTimeDict(initDict);
   }, [expInfo.day]);
 
+  // TimeTable Cell 클릭 시 실행하는 함수
+  // cell 색 변환 및 state 반영
   const handleTableClick = (day: string, time: string) => {
     console.log(day, time, 'is clicked');
 
-    // 클릭한 셀
+    // 사용자가 클릭한 cell
     const element = document.getElementById(day + '-' + time);
 
     // 만약 이미 클릭했던 셀이라면
+    // state에서 제거 + className 제거
     if (timeDict[day].includes(time)) {
       for (let i = 0; i < timeDict[day].length; i++) {
         if (timeDict[day][i] === time) {
-          settimeDict((prevState) => {
+          setTimeDict((prevState) => {
             return {
               ...prevState,
               [day]: timeDict[day]
@@ -94,8 +100,9 @@ const ExpPost = () => {
       }
     }
     // 클릭하지 않은 셀이라면
+    // state에 추가 + className 추가
     else {
-      settimeDict({
+      setTimeDict({
         ...timeDict,
         [day]: timeDict[day].concat(time),
       });
@@ -107,6 +114,8 @@ const ExpPost = () => {
     }
   };
 
+  // 로그인 버튼 클릭 시 실행하는 함수
+  // 로그인 입력값 확인 후
   // 서버로 data 전달
   const handleSubmit = () => {
     if (
@@ -120,6 +129,7 @@ const ExpPost = () => {
     } else if (JSON.stringify(timeDict) == '{}') {
       window.alert('실험 시각을 입력해주세요.');
     } else {
+      // 서버로 데이터 전송...서버가 없어요ㅠㅠ
       // axios
       //   .post('#', {
       //     data: expInfo,
@@ -134,21 +144,7 @@ const ExpPost = () => {
     }
   };
 
-  // title: '',
-  //   field: '',
-  //   location: '',
-  //   reward: 0,
-  //   age: {
-  //     ageFrom: 1,
-  //     ageTo: 150,
-  //   },
-  //   gender: '모두',
-  //   day: {
-  //     start: '',
-  //     end: '',
-  //   },
-  //   detail: '',
-
+  // input 입력 시 state에 반영해주는 함수
   const onChangeInfo = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -185,7 +181,7 @@ const ExpPost = () => {
         onClickTable={handleTableClick}
         onChange={onChangeInfo}
         period={expInfo.day}
-      ></PostBox>
+      />
       <SubmitButton
         name="submit_post"
         onClick={handleSubmit}

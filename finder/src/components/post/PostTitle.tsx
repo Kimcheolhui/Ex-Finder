@@ -14,11 +14,7 @@ const PostTitle = ({ onChange }: PostBoxProps) => {
       <InputTitle
         type="text"
         name="title"
-        onChange={(
-          e:
-            | React.ChangeEvent<HTMLInputElement>
-            | React.ChangeEvent<HTMLSelectElement>,
-        ) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           onChange(e);
         }}
         placeholder="실험 제목"
@@ -49,7 +45,7 @@ const InputTitle = styled(MyInput)`
   ::placeholder {
     font: normal normal bold 30px/40px Malgun Gothic;
     letter-spacing: 1.5px;
-    color: #000000;
+    color: #ababab;
     opacity: 1;
   }
 `;

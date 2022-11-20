@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MyInput from '../mycomponent/MyInput';
+import PostInputItem from './PostInputItem';
 
 import { getDate } from '../util/getDate';
 
@@ -39,28 +40,20 @@ const PostContent = ({ period, onChange }: PostBoxProps) => {
   return (
     <BasicInfo>
       <div>
-        <ItemInfo>
-          <div>실험 분야</div>
-          <InputCover>
-            <ItemInput
-              type="text"
-              name="field"
-              placeholder="ex) 심리학연구"
-              onChange={handleChange}
-            />
-          </InputCover>
-        </ItemInfo>
-        <ItemInfo>
-          <div>실험 위치</div>
-          <InputCover>
-            <ItemInput
-              type="text"
-              name="location"
-              placeholder="ex) GIST 대학 A동 410호"
-              onChange={handleChange}
-            />
-          </InputCover>
-        </ItemInfo>
+        <PostInputItem
+          inputname={'실험 분야'}
+          type={'text'}
+          name={'field'}
+          placeholder={'ex) 심리학연구'}
+          onChange={handleChange}
+        />
+        <PostInputItem
+          inputname={'실험 위치'}
+          type={'text'}
+          name={'location'}
+          placeholder={'ex) GIST 대학 A동 410호'}
+          onChange={handleChange}
+        />
         <ItemInfo>
           <div>실험 기간</div>
           <InputCover>
@@ -83,17 +76,13 @@ const PostContent = ({ period, onChange }: PostBoxProps) => {
         </ItemInfo>
       </div>
       <div>
-        <ItemInfo>
-          <div>실험 보상</div>
-          <InputCover>
-            <ItemInput
-              type="number"
-              name="reward"
-              placeholder="ex) 10,000"
-              onChange={handleChange}
-            />
-          </InputCover>
-        </ItemInfo>
+        <PostInputItem
+          inputname={'실험 보상'}
+          type={'number'}
+          name={'reward'}
+          placeholder={'ex) 10,000'}
+          onChange={handleChange}
+        />
         <ItemInfo>
           <div>피실험자 성별</div>
           <InputCover>

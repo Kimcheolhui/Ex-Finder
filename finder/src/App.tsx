@@ -1,6 +1,8 @@
 import React, { useState, createContext } from 'react';
+import styled from 'styled-components';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Pages
+// Page Componets
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ExpList from './pages/ExpList';
@@ -8,11 +10,6 @@ import ExpPost from './pages/ExpPost';
 import MyPage from './pages/MyPage';
 
 import { useLoginState } from './components/loginstate';
-
-import styled from 'styled-components';
-
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 interface LoginContextProps {
   login: boolean;

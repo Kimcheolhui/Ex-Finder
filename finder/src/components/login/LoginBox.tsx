@@ -8,42 +8,34 @@ import styled from 'styled-components';
 
 import MyButton from '../mycomponent/MyButton';
 import LogoIcon from '../logo/Icon';
-import MyInput from '../mycomponent/MyInput';
+import LoginInputBox from './LoginInputBox';
 
 const LoginBox = () => {
+  const navigate = useNavigate();
   const { toggleLogin } = useContext(LoginStateContext);
 
-  const [account, setAccount] = useState({
+  // 로그인 입력 정보 state
+  const [login, setLogin] = useState({
     id: '',
     password: '',
   });
 
-  const onChangeAccount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAccount({
-      ...account,
+  // login state 변경 시 반영 함수
+  const onChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLogin({
+      ...login,
       [e.target.name]: e.target.value,
     });
   };
 
-  const [showPassword, setShowPassword] = useState(false);
-  const PwdIcon = (
-    <ToggleImg
-      src={showPassword ? 'assets/pwd-visible.png' : 'assets/pwd-invisible.png'}
-    />
-  );
-
-  const togglePwd = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const navigate = useNavigate();
+  // 로그인 버튼 클릭 함수
   const handleLogin = () => {
-    if (account.id === '') {
+    if (login.id === '') {
       window.alert('이메일을 입력해주세요.');
       return;
     }
     // 비밀번호를 입력하지 않은 경우
-    else if (account.password === '') {
+    else if (login.password === '') {
       window.alert('비밀번호를 입력해주세요.');
     }
     // 이메일, 비번 둘 다 입력했을 경우
@@ -63,33 +55,11 @@ const LoginBox = () => {
         }}
       />
       <DivLogin>로그인</DivLogin>
-      <LoginInput>
-        <DivInput>
-          <Input
-            type="email"
-            name="id"
-            onChange={(e) => {
-              onChangeAccount(e);
-            }}
-            placeholder="이메일을 입력하세요."
-          />
-        </DivInput>
-        <DivInput>
-          <Input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            onChange={(e) => {
-              onChangeAccount(e);
-            }}
-            placeholder="비밀번호를 입력하세요."
-          />
-          <MyButton name="togglepassword" img={PwdIcon} onClick={togglePwd} />
-        </DivInput>
-      </LoginInput>
-      <DivQue>
-        <div>비밀번호를 잊으셨나요?</div>
-        <div>아직 회원이 아니신가요?</div>
-      </DivQue>
+      <LoginInputBox onChangeLogin={onChangeLogin} />
+      <DivQuestion>
+        <div>아이디 ・ 비밀번호 찾기</div>
+        <div>회원 가입하기</div>
+      </DivQuestion>
       <LoginButton text="로그인" name="Login Button" onClick={handleLogin} />
     </LoginContent>
   );
@@ -125,39 +95,7 @@ const DivLogin = styled.div`
   margin-bottom: 70px;
 `;
 
-const LoginInput = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const DivInput = styled.div`
-  width: 501px;
-
-  border-bottom: 1px solid grey;
-  padding-bottom: 23px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-
-  display: flex;
-  justify-content: space-between;
-`;
-
-const Input = styled(MyInput)`
-  border: none;
-  outline: none;
-
-  margin-left: 27px;
-
-  font: normal normal bold 25px/33px Malgun Gothic;
-  letter-spacing: 0.38px;
-`;
-
-const ToggleImg = styled.img`
-  width: 34px;
-  height: 34px;
-`;
-
-const DivQue = styled.div`
+const DivQuestion = styled.div`
   width: 501px;
   text-align: right;
   font: normal normal bold 25px/33px Malgun Gothic;
