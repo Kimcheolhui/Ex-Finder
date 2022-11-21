@@ -19,3 +19,27 @@
 ### 1. 메인 페이지
 
 피실험자 모집글 목록 페이지, 마이페이지, 로그인 페이지, 피실험자 모집글 작성 페이지로 갈 수 있다.
+<img src="https://user-images.githubusercontent.com/58902772/203003608-16460464-4902-46b3-9ee8-4bfbf7ab5de7.png" />
+
+### 2. 피실험자 모집글 목록 페이지
+
+현재 등록되어 있는 피실험자 모집글 목록을 볼 수 있으며, 피실험자 모집글을 작성할 수 있다.
+<img src="https://user-images.githubusercontent.com/58902772/203003644-824cfac5-c311-4dd2-9c14-6d56a13cab27.png"/>
+
+### 3. 피실험자 모집글 작성 페이지
+
+피실험자 모집글 작성에 필요한 정보들을 기입할 수 있다. 실험제목, 실험분야, 실험위치, 실험기간, 실험보상, 피실험자 성별과 나이, 실험 세부 내용, 그리고 실험 가능 시간 테이블을 입력할 수 있다.
+<img src="https://user-images.githubusercontent.com/58902772/203003647-e396d536-d08a-475b-bf39-007196045011.png" />
+<img src="https://user-images.githubusercontent.com/58902772/203003675-dbc85efb-3c5a-4234-a4d3-cd11258cd236.png" />
+
+### 4. 로그인 페이지
+
+웹사이트에 로그인을 할 수 있다.
+<img src="https://user-images.githubusercontent.com/58902772/203003679-8774da1b-f406-4e3c-a157-5cc53aaf6529.png" />
+
+### 5. 마이페이지
+
+사용자의 기본 정보, 참여한 실험 목록, 작성한 실험글 목록을 볼 수 있다.
+<img src="https://user-images.githubusercontent.com/58902772/203003686-ced630b0-00f5-4f54-b49b-3ba01f86c9fc.png" />
+
+### 6. 개발하지 못한 기능
